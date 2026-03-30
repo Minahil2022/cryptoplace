@@ -56,3 +56,34 @@
 .coin-info ul li:last-child{
     font-weight: 300;
 }
+
+.coin-details-wrapper {
+    display: flex;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 100px auto;
+    align-items: flex-start;
+    padding: 0 20px;
+}
+
+.coin-info {
+    flex: 1;
+    min-width: 0;
+    margin: 0 !important;
+}
+
+.buy-sell-card-side {
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .coin-details-wrapper {
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+
+    .buy-sell-card-side {
+        width: 100%;
+    }
+}

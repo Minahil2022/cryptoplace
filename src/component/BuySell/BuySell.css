@@ -1,0 +1,182 @@
+/* Side Card Styles */
+.buy-sell-card-side {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(100, 100, 255, 0.3);
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 350px;
+}
+
+.card-header-side {
+  padding: 20px;
+  border-bottom: 1px solid rgba(100, 100, 255, 0.2);
+  background: rgba(100, 100, 255, 0.05);
+}
+
+.card-header-side h3 {
+  font-size: 18px;
+  margin: 0 0 10px 0;
+  color: #fff;
+  font-weight: 600;
+}
+
+.price-info-side {
+  margin: 0;
+  color: #6400ff;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.card-content-side {
+  padding: 20px;
+}
+
+/* Toggle Group (Checkboxes) */
+.toggle-group {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.checkbox-wrapper {
+  flex: 1;
+  position: relative;
+  cursor: pointer;
+}
+
+.checkbox-input {
+  display: none;
+}
+
+.checkbox-label {
+  display: block;
+  padding: 10px 16px;
+  border: 2px solid rgba(100, 100, 255, 0.3);
+  border-radius: 8px;
+  text-align: center;
+  color: #b0b0b0;
+  background: rgba(100, 100, 255, 0.05);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.checkbox-input:checked + .checkbox-label,
+.checkbox-label.active {
+  background: linear-gradient(135deg, #6400ff 0%, #4500c6 100%);
+  border-color: #6400ff;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(100, 0, 255, 0.3);
+}
+
+.input-group-side {
+  margin-bottom: 16px;
+}
+
+.input-group-side label {
+  display: block;
+  margin-bottom: 6px;
+  color: #e0e0e0;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.input-field-side {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(100, 100, 255, 0.3);
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 13px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.input-field-side:focus {
+  outline: none;
+  border-color: #6400ff;
+  background: rgba(100, 100, 255, 0.1);
+  box-shadow: 0 0 8px rgba(100, 100, 255, 0.2);
+}
+
+.input-field-side::placeholder {
+  color: #707070;
+}
+
+.input-field-side:read-only {
+  background: rgba(100, 100, 255, 0.08);
+  cursor: not-allowed;
+}
+
+.total-info-side {
+  background: rgba(100, 100, 255, 0.1);
+  border-left: 3px solid #6400ff;
+  padding: 10px 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.total-info-side span {
+  color: #e0e0e0;
+  font-size: 13px;
+}
+
+.total-info-side .price {
+  color: #6400ff;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.btn-side {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-buy-side {
+  background: linear-gradient(135deg, #6400ff 0%, #4500c6 100%);
+  color: #fff;
+}
+
+.btn-buy-side:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(100, 0, 255, 0.4);
+}
+
+.btn-sell-side {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+  color: #fff;
+}
+
+.btn-sell-side:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 107, 107, 0.4);
+}
+
+@media (max-width: 768px) {
+  .buy-sell-card-side {
+    max-width: 100%;
+  }
+
+  .card-header-side h3 {
+    font-size: 16px;
+  }
+
+  .price-info-side {
+    font-size: 20px;
+  }
+}
