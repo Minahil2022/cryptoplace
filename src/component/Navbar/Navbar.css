@@ -45,6 +45,58 @@
     background: white;
     border: none;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.navbar button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(100, 0, 255, 0.3);
+}
+
+.login-btn {
+    padding: 8px 20px !important;
+    font-size: 14px !important;
+    background: transparent !important;
+    color: #6400ff !important;
+    border: 2px solid #6400ff !important;
+    border-radius: 6px !important;
+}
+
+.login-btn:hover {
+    background: rgba(100, 0, 255, 0.1) !important;
+}
+
+.signup-btn {
+    background: linear-gradient(135deg, #6400ff 0%, #4500c6 100%) !important;
+    color: white !important;
+    padding: 10px 25px !important;
+}
+
+.signup-btn:hover {
+    box-shadow: 0 6px 20px rgba(100, 0, 255, 0.4) !important;
+}
+
+.logout-btn {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%) !important;
+    color: white !important;
+    padding: 8px 20px !important;
+    font-size: 14px !important;
+}
+
+.logout-btn:hover {
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4) !important;
+}
+
+.auth-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-name {
+    color: #e0e0e0;
+    font-weight: 600;
+    font-size: 14px;
 }
 
 

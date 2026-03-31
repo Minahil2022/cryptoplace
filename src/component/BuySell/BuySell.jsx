@@ -1,14 +1,36 @@
 import React, { useState, useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import './BuySell.css'
 import { CoinContext } from '../../context/CoinContext'
+import { AuthContext } from '../../context/AuthContext'
 
 const BuySell = ({ coinData }) => {
   const { currency } = useContext(CoinContext)
+  const { isAuthenticated } = useContext(AuthContext)
+  const navigate = useNavigate()
   const [quantity, setQuantity] = useState('')
   const [isBuy, setIsBuy] = useState(true)
 
   const currentPrice = coinData?.market_data?.current_price[currency.name] || 0
   const totalValue = (quantity * currentPrice).toLocaleString()
+
+  const handleBuyClick = () => {
+    if (!isAuthenticated) {
+      navigate('/login')
+      return
+    }
+    // Handle buy transaction logic here
+    alert(`Buying ${quantity} ${coinData?.symbol?.toUpperCase()} at ${currency.symbol}${currentPrice}`)
+  }
+
+  const handleSellClick = () => {
+    if (!isAuthenticated) {
+      navigate('/login')
+      return
+    }
+    // Handle sell transaction logic here
+    alert(`Selling ${quantity} ${coinData?.symbol?.toUpperCase()} at ${currency.symbol}${currentPrice}`)
+  }
 
   return (
     <div className="buy-sell-card-side">
@@ -76,7 +98,7 @@ const BuySell = ({ coinData }) => {
               </div>
             )}
 
-            <button className="btn-side btn-buy-side">
+            <button className="btn-side btn-buy-side" onClick={handleBuyClick}>
               Buy Now
             </button>
           </>
@@ -111,7 +133,7 @@ const BuySell = ({ coinData }) => {
               </div>
             )}
 
-            <button className="btn-side btn-sell-side">
+            <button className="btn-side btn-sell-side" onClick={handleSellClick}>
               Sell Now
             </button>
           </>

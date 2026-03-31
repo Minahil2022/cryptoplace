@@ -1,13 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './Coin.css'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { CoinContext } from '../../context/CoinContext'
+import { AuthContext } from '../../context/AuthContext'
 import LineChart from '../../component/LineChart/LineChart'
 import BuySell from '../../component/BuySell/BuySell'
 
 const Coin = () => {
 
   const { coinId } = useParams()
+  const navigate = useNavigate()
+  const { isAuthenticated } = useContext(AuthContext)
 
   const [coinData, setCoinData] = useState(null)
   const [historicalData, setHistoricalData] = useState(null)
@@ -83,7 +86,21 @@ const Coin = () => {
             </ul>
           </div>
 
-          <BuySell coinData={coinData} />
+          {isAuthenticated ? (
+            <BuySell coinData={coinData} />
+          ) : (
+            <div className="login-required-card">
+              <div className="login-required-icon">🔒</div>
+              <h3>Login Required</h3>
+              <p>You need to be logged in to buy or sell coins</p>
+              <button onClick={() => navigate('/login')} className="btn-login-redirect">
+                Go to Login
+              </button>
+              <button onClick={() => navigate('/signup')} className="btn-signup-redirect">
+                Create Account
+              </button>
+            </div>
+          )}
         </div>
 
       </div>
