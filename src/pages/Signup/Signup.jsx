@@ -8,8 +8,8 @@ const Signup = () => {
   const { signup } = useContext(AuthContext)
   
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
+    created_by: '',
+    user_name: '',
     password: '',
     confirmPassword: ''
   })
@@ -21,24 +21,16 @@ const Signup = () => {
   const validateForm = () => {
     const newErrors = {}
     
-    if (!formData.name.trim()) {
-      newErrors.name = 'Name is required'
-    } else if (formData.name.trim().length < 2) {
-      newErrors.name = 'Name must be at least 2 characters'
+    if (!formData.created_by.trim()) {
+      newErrors.created_by = 'Name is required'
     }
     
-    if (!formData.email) {
-      newErrors.email = 'Email is required'
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email'
+    if (!formData.user_name) {
+      newErrors.user_name = 'Username is required'
     }
     
     if (!formData.password) {
       newErrors.password = 'Password is required'
-    } else if (formData.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters'
-    } else if (!/(?=.*[A-Z])/.test(formData.password)) {
-      newErrors.password = 'Password must contain at least one uppercase letter'
     }
     
     if (!formData.confirmPassword) {
@@ -77,7 +69,7 @@ const Signup = () => {
     
     try {
       // Call signup function from context
-      const result = await signup(formData.name, formData.email, formData.password)
+      const result = await signup(formData.user_name, formData.password, formData.created_by)
       
       if (result.success) {
         setSuccessMessage('Account created successfully! Redirecting to login...')
@@ -104,34 +96,34 @@ const Signup = () => {
           </div>
 
           <form onSubmit={handleSubmit} className='signup-form'>
-            {/* Name Field */}
+            {/* Name Field (created_by) */}
             <div className='form-group'>
-              <label htmlFor='name'>Full Name</label>
+              <label htmlFor='created_by'>Full Name</label>
               <input
                 type='text'
-                id='name'
-                name='name'
-                value={formData.name}
+                id='created_by'
+                name='created_by'
+                value={formData.created_by}
                 onChange={handleChange}
                 placeholder='Enter your full name'
-                className={`form-input ${errors.name ? 'error' : ''}`}
+                className={`form-input ${errors.created_by ? 'error' : ''}`}
               />
-              {errors.name && <span className='error-message'>{errors.name}</span>}
+              {errors.created_by && <span className='error-message'>{errors.created_by}</span>}
             </div>
 
-            {/* Email Field */}
+            {/* Username Field */}
             <div className='form-group'>
-              <label htmlFor='email'>Email Address</label>
+              <label htmlFor='user_name'>Username</label>
               <input
-                type='email'
-                id='email'
-                name='email'
-                value={formData.email}
+                type='text'
+                id='user_name'
+                name='user_name'
+                value={formData.user_name}
                 onChange={handleChange}
-                placeholder='Enter your email'
-                className={`form-input ${errors.email ? 'error' : ''}`}
+                placeholder='Choose a username'
+                className={`form-input ${errors.user_name ? 'error' : ''}`}
               />
-              {errors.email && <span className='error-message'>{errors.email}</span>}
+              {errors.user_name && <span className='error-message'>{errors.user_name}</span>}
             </div>
 
             {/* Password Field */}
@@ -147,7 +139,6 @@ const Signup = () => {
                 className={`form-input ${errors.password ? 'error' : ''}`}
               />
               {errors.password && <span className='error-message'>{errors.password}</span>}
-              <span className='password-hint'>At least 6 characters with 1 uppercase letter</span>
             </div>
 
             {/* Confirm Password Field */}

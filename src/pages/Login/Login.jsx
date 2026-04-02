@@ -8,7 +8,7 @@ const Login = () => {
   const { login } = useContext(AuthContext)
   
   const [formData, setFormData] = useState({
-    email: '',
+    user_name: '',
     password: ''
   })
   
@@ -19,16 +19,12 @@ const Login = () => {
   const validateForm = () => {
     const newErrors = {}
     
-    if (!formData.email) {
-      newErrors.email = 'Email is required'
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email'
+    if (!formData.user_name) {
+      newErrors.user_name = 'Username is required'
     }
     
     if (!formData.password) {
       newErrors.password = 'Password is required'
-    } else if (formData.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters'
     }
     
     setErrors(newErrors)
@@ -61,7 +57,7 @@ const Login = () => {
     
     try {
       // Call login function from context
-      const result = await login(formData.email, formData.password)
+      const result = await login(formData.user_name, formData.password)
       
       if (result.success) {
         setSuccessMessage('Login successful! Redirecting...')
@@ -88,19 +84,19 @@ const Login = () => {
           </div>
 
           <form onSubmit={handleSubmit} className='login-form'>
-            {/* Email Field */}
+            {/* Username Field */}
             <div className='form-group'>
-              <label htmlFor='email'>Email Address</label>
+              <label htmlFor='user_name'>Username</label>
               <input
-                type='email'
-                id='email'
-                name='email'
-                value={formData.email}
+                type='text'
+                id='user_name'
+                name='user_name'
+                value={formData.user_name}
                 onChange={handleChange}
-                placeholder='Enter your email'
-                className={`form-input ${errors.email ? 'error' : ''}`}
+                placeholder='Enter your username'
+                className={`form-input ${errors.user_name ? 'error' : ''}`}
               />
-              {errors.email && <span className='error-message'>{errors.email}</span>}
+              {errors.user_name && <span className='error-message'>{errors.user_name}</span>}
             </div>
 
             {/* Password Field */}

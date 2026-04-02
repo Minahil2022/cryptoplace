@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from 'react'
+import UserService from '../services/UserService'
 
 export const AuthContext = createContext()
 
@@ -21,31 +22,18 @@ const AuthContextProvider = (props) => {
     setLoading(false)
   }, [])
 
-  // Login function
+  // Login function - Calls backend API
   const login = async (email, password) => {
     try {
-      // Simulate API call - Replace with actual API call
-      // For now, we're just validating locally and storing in localStorage
+      const result = await UserService.login(email, password)
       
-      // Simulate network delay
-      await new Promise(resolve => setTimeout(resolve, 800))
-
-      // Check if user exists in localStorage (simulated database)
-      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]')
-      const foundUser = registeredUsers.find(u => u.email === email && u.password === password)
-
-      if (foundUser) {
-        const userData = {
-          id: foundUser.id,
-          name: foundUser.name,
-          email: foundUser.email
-        }
-        setUser(userData)
+      if (result.success) {
+        setUser(result.user)
         setIsAuthenticated(true)
-        localStorage.setItem('authUser', JSON.stringify(userData))
-        return { success: true, message: 'Login successful!' }
+        localStorage.setItem('authUser', JSON.stringify(result.user))
+        return { success: true, message: result.message }
       } else {
-        return { success: false, message: 'Invalid email or password' }
+        return { success: false, message: result.message }
       }
     } catch (error) {
       console.error('Login error:', error)
@@ -53,35 +41,16 @@ const AuthContextProvider = (props) => {
     }
   }
 
-  // Signup function
+  // Signup function - Calls backend API
   const signup = async (name, email, password) => {
     try {
-      // Simulate API call - Replace with actual API call
+      const result = await UserService.signup(name, email, password)
       
-      // Simulate network delay
-      await new Promise(resolve => setTimeout(resolve, 1000))
-
-      // Check if user already exists
-      const registeredUsers = JSON.parse(localStorage.getItem('registeredUsers') || '[]')
-      const userExists = registeredUsers.some(u => u.email === email)
-
-      if (userExists) {
-        return { success: false, message: 'Email already registered' }
+      if (result.success) {
+        return { success: true, message: result.message }
+      } else {
+        return { success: false, message: result.message }
       }
-
-      // Create new user
-      const newUser = {
-        id: Date.now().toString(),
-        name,
-        email,
-        password // In production, this should be hashed on the server
-      }
-
-      // Store user in localStorage (simulated database)
-      registeredUsers.push(newUser)
-      localStorage.setItem('registeredUsers', JSON.stringify(registeredUsers))
-
-      return { success: true, message: 'Account created successfully!' }
     } catch (error) {
       console.error('Signup error:', error)
       return { success: false, message: 'An error occurred during signup' }
@@ -92,7 +61,7 @@ const AuthContextProvider = (props) => {
   const logout = () => {
     setUser(null)
     setIsAuthenticated(false)
-    localStorage.removeItem('authUser')
+    UserService.logout()
   }
 
   const contextValue = {
