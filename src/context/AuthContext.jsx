@@ -1,9 +1,12 @@
 import { createContext, useState, useEffect } from 'react'
 import UserService from '../services/UserService'
+// User type import for JSDoc
+import { /** @type {User} */ } from '../models/UserModel'
 
 export const AuthContext = createContext()
 
 const AuthContextProvider = (props) => {
+  /** @type {[import('../models/UserModel').User|null, Function]} */
   const [user, setUser] = useState(null)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [loading, setLoading] = useState(true)
@@ -23,7 +26,12 @@ const AuthContextProvider = (props) => {
   }, [])
 
   // Login function - Calls backend API
-  const login = async (email, password) => {
+  /**
+   * @param {string} user_name
+   * @param {string} password
+   * @returns {Promise<{success: boolean, message: string}>}
+   */
+  const login = async (user_name, password) => {
     try {
       const result = await UserService.login(email, password)
       
@@ -42,7 +50,13 @@ const AuthContextProvider = (props) => {
   }
 
   // Signup function - Calls backend API
-  const signup = async (name, email, password) => {
+  /**
+   * @param {string} user_name
+   * @param {string} password
+   * @param {string} created_by
+   * @returns {Promise<{success: boolean, message: string}>}
+   */
+  const signup = async (user_name, password, created_by) => {
     try {
       const result = await UserService.signup(name, email, password)
       

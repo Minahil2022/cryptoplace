@@ -93,14 +93,44 @@
     gap: 15px;
 }
 
-.user-name {
-    color: #e0e0e0;
-    font-weight: 600;
+.user-badge {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6400ff 0%, #4500c6 100%);
+    color: #ffffff;
+    font-weight: 700;
     font-size: 14px;
+    cursor: default;
 }
 
+.user-badge-tooltip {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 10, 30, 0.95);
+    color: #ffffff;
+    padding: 6px 10px;
+    border-radius: 8px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    font-size: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
 
-
+.user-badge:hover .user-badge-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
 
 @media (max-width: 900px){
     .navbar{

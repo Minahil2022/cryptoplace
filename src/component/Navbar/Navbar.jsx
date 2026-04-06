@@ -1,4 +1,6 @@
 import React, { useContext } from 'react'
+// User type import for JSDoc
+import { /** @type {User} */ } from '../../models/UserModel'
 import './Navbar.css'
 import { CoinContext } from '../../context/CoinContext'
 import { AuthContext } from '../../context/AuthContext'
@@ -7,6 +9,7 @@ import { Link, useNavigate } from 'react-router-dom'
 const Navbar = () => {
 
   const { setCurrency } = useContext(CoinContext)
+  /** @type {{ isAuthenticated: boolean, user: import('../../models/UserModel').User|null, logout: Function }} */
   const { isAuthenticated, user, logout } = useContext(AuthContext)
   const navigate = useNavigate()
 
@@ -57,10 +60,13 @@ const Navbar = () => {
         
         {isAuthenticated ? (
           <div className="auth-section">
-            <span className="user-name">{user?.name}</span>
             <button onClick={handleLogout} className="logout-btn">
               Logout
             </button>
+            <div className="user-badge" title={user.user_name || ''}>
+              {user?.user_name?.charAt(0).toUpperCase() || ''}
+              <span className="user-badge-tooltip">{user?.user_name}</span>
+            </div>
           </div>
         ) : (
           <>

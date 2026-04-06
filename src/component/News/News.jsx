@@ -78,42 +78,12 @@ const News = () => {
         icon: "📊",
         gradient: "linear-gradient(135deg, #667eea 0%, #764ce3 100%)",
         sources: [{ title: "Crypto Markets" }]
-      },
-      {
-        title: "Web3 Gaming Adoption Surges with New Play-to-Earn Models",
-        url: "https://example.com",
-        icon: "🎮",
-        gradient: "linear-gradient(135deg, #fa7921 0%, #f7ce38 100%)",
-        sources: [{ title: "Gaming Chronicles" }]
-      },
-      {
-        title: "Lightning Network Achieves Major Milestone in Transactions",
-        url: "https://example.com",
-        icon: "⚡",
-        gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
-        sources: [{ title: "Bitcoin Dev" }]
-      },
-      {
-        title: "NFT Market Evolves with Sustainable Smart Contracts",
-        url: "https://example.com",
-        icon: "🎨",
-        gradient: "linear-gradient(135deg, #4158d0 0%, #c850c0 100%)",
-        sources: [{ title: "NFT Hub" }]
-      },
-      {
-        title: "Staking Rewards Reach Record Levels Across Networks",
-        url: "https://example.com",
-        icon: "📈",
-        gradient: "linear-gradient(135deg, #0093E9 0%, #80D0C7 100%)",
-        sources: [{ title: "Staking Info" }]
-      },
-      {
-        title: "Decentralized Finance Breaches $200 Billion TVL Milestone",
-        url: "https://example.com",
-        icon: "💰",
-        gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)",
-        sources: [{ title: "DeFi Analytics" }]
       }
+      
+      
+      
+      
+      
     ]
   }
 

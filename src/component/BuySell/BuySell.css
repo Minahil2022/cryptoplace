@@ -33,43 +33,44 @@
   padding: 20px;
 }
 
-/* Toggle Group (Checkboxes) */
-.toggle-group {
+/* Toggle Tabs */
+.toggle-tabs {
   display: flex;
-  gap: 12px;
+  gap: 0;
   margin-bottom: 20px;
+  border-bottom: 2px solid rgba(100, 100, 255, 0.2);
 }
 
-.checkbox-wrapper {
+.tab-btn {
   flex: 1;
-  position: relative;
-  cursor: pointer;
-}
-
-.checkbox-input {
-  display: none;
-}
-
-.checkbox-label {
-  display: block;
-  padding: 10px 16px;
-  border: 2px solid rgba(100, 100, 255, 0.3);
-  border-radius: 8px;
-  text-align: center;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
   color: #b0b0b0;
-  background: rgba(100, 100, 255, 0.05);
   font-weight: 600;
-  transition: all 0.3s ease;
-  cursor: pointer;
   font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  text-transform: capitalize;
 }
 
-.checkbox-input:checked + .checkbox-label,
-.checkbox-label.active {
+.tab-btn.active {
+  color: #6400ff;
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
   background: linear-gradient(135deg, #6400ff 0%, #4500c6 100%);
-  border-color: #6400ff;
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(100, 0, 255, 0.3);
+}
+
+.tab-btn:hover {
+  color: #8d5fff;
 }
 
 .input-group-side {
@@ -84,14 +85,21 @@
   font-weight: 600;
 }
 
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
 .input-field-side {
   width: 100%;
-  padding: 10px 12px;
+  padding: 12px 12px;
   border: 1px solid rgba(100, 100, 255, 0.3);
   border-radius: 6px;
   background: rgba(0, 0, 0, 0.3);
   color: #fff;
-  font-size: 13px;
+  font-size: 18px;
+  font-weight: 600;
   transition: all 0.3s ease;
   box-sizing: border-box;
 }
@@ -110,6 +118,17 @@
 .input-field-side:read-only {
   background: rgba(100, 100, 255, 0.08);
   cursor: not-allowed;
+}
+
+.currency-dropdown {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: #b0b0b0;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px 8px;
 }
 
 .total-info-side {
@@ -132,6 +151,69 @@
   color: #6400ff;
   font-weight: 700;
   font-size: 16px;
+}
+
+/* Conversion Display */
+.conversion-display {
+  background: rgba(100, 100, 255, 0.08);
+  border: 1px solid rgba(100, 100, 255, 0.2);
+  border-radius: 6px;
+  padding: 12px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.conversion-display .approx {
+  color: #707070;
+  font-size: 14px;
+  margin-right: 4px;
+}
+
+.conversion-display .crypto-amount {
+  color: #6400ff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.conversion-display .crypto-symbol {
+  color: #b0b0b0;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Preset Buttons */
+.preset-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.preset-btn {
+  flex: 1;
+  padding: 8px 12px;
+  border: 1px solid rgba(100, 100, 255, 0.3);
+  border-radius: 6px;
+  background: rgba(100, 100, 255, 0.05);
+  color: #b0b0b0;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.preset-btn:hover {
+  background: rgba(100, 100, 255, 0.15);
+  border-color: #6400ff;
+  color: #6400ff;
+}
+
+.preset-btn:active {
+  background: linear-gradient(135deg, #6400ff 0%, #4500c6 100%);
+  border-color: #6400ff;
+  color: #fff;
 }
 
 .btn-side {

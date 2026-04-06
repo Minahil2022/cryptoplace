@@ -5,6 +5,7 @@ import { AuthContext } from '../../context/AuthContext'
 
 const Login = () => {
   const navigate = useNavigate()
+  /** @type {(user_name: string, password: string) => Promise<{success: boolean, message: string}>} */
   const { login } = useContext(AuthContext)
   
   const [formData, setFormData] = useState({
