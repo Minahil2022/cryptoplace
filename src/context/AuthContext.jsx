@@ -1,5 +1,6 @@
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useState, useEffect, useContext } from 'react'
 import UserService from '../services/UserService'
+import { WalletContext } from './WalletContext'
 // User type import for JSDoc
 import { /** @type {User} */ } from '../models/UserModel'
 
@@ -33,12 +34,13 @@ const AuthContextProvider = (props) => {
    */
   const login = async (user_name, password) => {
     try {
-      const result = await UserService.login(email, password)
+      const result = await UserService.login(user_name, password)
       
       if (result.success) {
         setUser(result.user)
         setIsAuthenticated(true)
         localStorage.setItem('authUser', JSON.stringify(result.user))
+        // Initialize wallet for logged in user
         return { success: true, message: result.message }
       } else {
         return { success: false, message: result.message }
@@ -58,7 +60,7 @@ const AuthContextProvider = (props) => {
    */
   const signup = async (user_name, password, created_by) => {
     try {
-      const result = await UserService.signup(name, email, password)
+      const result = await UserService.signup(user_name, password, created_by)
       
       if (result.success) {
         return { success: true, message: result.message }
