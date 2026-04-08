@@ -30,20 +30,23 @@
 }
 
 .card-content-side {
-  padding: 20px;
+  padding: 16px;
+  max-height: 570px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* Toggle Tabs */
 .toggle-tabs {
   display: flex;
   gap: 0;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   border-bottom: 2px solid rgba(100, 100, 255, 0.2);
 }
 
 .tab-btn {
   flex: 1;
-  padding: 12px 16px;
+  padding: 10px 14px;
   border: none;
   background: transparent;
   color: #b0b0b0;
@@ -74,7 +77,7 @@
 }
 
 .input-group-side {
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .input-group-side label {
@@ -158,8 +161,8 @@
   background: rgba(100, 100, 255, 0.08);
   border: 1px solid rgba(100, 100, 255, 0.2);
   border-radius: 6px;
-  padding: 12px;
-  margin-bottom: 16px;
+  padding: 8px;
+  margin-bottom: 8px;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -188,17 +191,17 @@
 .preset-buttons {
   display: flex;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .preset-btn {
   flex: 1;
-  padding: 8px 12px;
+  padding: 6px 8px;
   border: 1px solid rgba(100, 100, 255, 0.3);
   border-radius: 6px;
   background: rgba(100, 100, 255, 0.05);
   color: #b0b0b0;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -218,15 +221,16 @@
 
 .btn-side {
   width: 100%;
-  padding: 12px;
+  padding: 10px;
   border: none;
   border-radius: 6px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  margin-top: 4px;
 }
 
 .btn-buy-side {
@@ -261,4 +265,23 @@
   .price-info-side {
     font-size: 20px;
   }
+}
+
+/* Scrollbar Styling */
+.card-content-side::-webkit-scrollbar {
+  width: 6px;
+}
+
+.card-content-side::-webkit-scrollbar-track {
+  background: rgba(100, 100, 255, 0.05);
+  border-radius: 10px;
+}
+
+.card-content-side::-webkit-scrollbar-thumb {
+  background: rgba(100, 100, 255, 0.3);
+  border-radius: 10px;
+}
+
+.card-content-side::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 100, 255, 0.5);
 }
