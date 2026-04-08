@@ -75,9 +75,15 @@ const AuthContextProvider = (props) => {
 
   // Logout function
   const logout = () => {
-    setUser(null)
-    setIsAuthenticated(false)
-    UserService.logout()
+    try {
+      setUser(null)
+      setIsAuthenticated(false)
+      localStorage.removeItem('authUser')
+      localStorage.removeItem('userWallet')
+      UserService.logout()
+    } catch (error) {
+      console.error('Logout error:', error)
+    }
   }
 
   const contextValue = {

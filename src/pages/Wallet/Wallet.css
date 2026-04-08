@@ -1,0 +1,351 @@
+.wallet-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 100%);
+  padding: 40px 10%;
+  color: #ddd;
+}
+
+.wallet-header {
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.wallet-header h1 {
+  font-size: 36px;
+  margin: 0 0 10px 0;
+  color: #fff;
+  font-weight: 700;
+}
+
+.user-info {
+  color: #6400ff;
+  font-size: 16px;
+  margin: 0;
+  font-weight: 500;
+}
+
+.wallet-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Balance Card Styles */
+.balance-card,
+.transactions-card,
+.stats-card {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  border-radius: 12px;
+  border: 1px solid rgba(100, 100, 255, 0.3);
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.balance-card:hover,
+.transactions-card:hover,
+.stats-card:hover {
+  border-color: rgba(100, 100, 255, 0.6);
+  box-shadow: 0 8px 30px rgba(100, 100, 255, 0.15);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(100, 100, 255, 0.2);
+  padding-bottom: 12px;
+}
+
+.card-header h2 {
+  font-size: 18px;
+  margin: 0;
+  color: #fff;
+  font-weight: 600;
+}
+
+.currency-badge,
+.holdings-count,
+.transaction-count {
+  background: rgba(100, 100, 255, 0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6400ff;
+}
+
+.balance-display {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.balance-amount {
+  font-size: 32px;
+  font-weight: 700;
+  color: #6400ff;
+  margin: 0;
+}
+
+.balance-details {
+  background: rgba(100, 100, 255, 0.08);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.balance-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(100, 100, 255, 0.1);
+  font-size: 14px;
+}
+
+.balance-row:last-child {
+  border-bottom: none;
+}
+
+.balance-row span {
+  color: #b0b0b0;
+}
+
+.balance-row .amount {
+  color: #6400ff;
+  font-weight: 600;
+}
+
+/* Crypto Card */
+.crypto-card {
+  grid-column: 1 / -1;
+}
+
+.holdings-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.holding-row {
+  background: rgba(100, 100, 255, 0.08);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(100, 100, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.holding-row:hover {
+  background: rgba(100, 100, 255, 0.15);
+  border-color: rgba(100, 100, 255, 0.4);
+}
+
+.crypto-symbol {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+  color: #6400ff;
+  margin-bottom: 6px;
+}
+
+.crypto-quantity {
+  display: block;
+  font-size: 12px;
+  color: #b0b0b0;
+  word-break: break-all;
+}
+
+/* Transactions */
+.transactions-card {
+  grid-column: 1 / -1;
+}
+
+.transactions-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.transaction-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: rgba(100, 100, 255, 0.05);
+  border-radius: 6px;
+  margin-bottom: 8px;
+  border-left: 3px solid #6400ff;
+  font-size: 13px;
+}
+
+.transaction-row.sell {
+  border-left-color: #ff6b6b;
+}
+
+.transaction-row.buy {
+  border-left-color: #6400ff;
+}
+
+.txn-info {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex: 1;
+}
+
+.txn-type {
+  background: rgba(100, 100, 255, 0.2);
+  color: #6400ff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.transaction-row.sell .txn-type {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+}
+
+.txn-symbol {
+  color: #b0b0b0;
+  font-weight: 600;
+}
+
+.txn-amount {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex: 1;
+}
+
+.quantity {
+  color: #6400ff;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.price {
+  color: #c0c0c0;
+  font-size: 11px;
+}
+
+.price.buy {
+  color: #ff9999;
+}
+
+.price.sell {
+  color: #99ff99;
+}
+
+.txn-time {
+  color: #707070;
+  font-size: 11px;
+}
+
+/* Stats Card */
+.stats-card {
+  grid-column: 1 / -1;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 12px;
+}
+
+.stat-item {
+  background: rgba(100, 100, 255, 0.08);
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(100, 100, 255, 0.2);
+  text-align: center;
+}
+
+.stat-label {
+  display: block;
+  font-size: 12px;
+  color: #b0b0b0;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.stat-value {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  color: #6400ff;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  background: rgba(100, 100, 255, 0.05);
+  border-radius: 8px;
+  border: 1px dashed rgba(100, 100, 255, 0.2);
+}
+
+.empty-state p {
+  margin: 0 0 8px 0;
+  color: #b0b0b0;
+  font-size: 14px;
+}
+
+.text-small {
+  font-size: 12px;
+  color: #707070;
+}
+
+/* Scrollbar */
+.transactions-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.transactions-list::-webkit-scrollbar-track {
+  background: rgba(100, 100, 255, 0.05);
+  border-radius: 10px;
+}
+
+.transactions-list::-webkit-scrollbar-thumb {
+  background: rgba(100, 100, 255, 0.3);
+  border-radius: 10px;
+}
+
+.transactions-list::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 100, 255, 0.5);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .wallet-content {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .wallet-container {
+    padding: 20px 5%;
+  }
+
+  .wallet-header h1 {
+    font-size: 24px;
+  }
+
+  .wallet-content {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .balance-card,
+  .transactions-card,
+  .stats-card {
+    padding: 16px;
+  }
+
+  .balance-amount {
+    font-size: 24px;
+  }
+}
