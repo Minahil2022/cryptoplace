@@ -56,42 +56,45 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  border-bottom: 2px solid rgba(100, 100, 255, 0.2);
+  border-bottom: 2px solid rgba(100, 150, 255, 0.35);
   padding-bottom: 12px;
 }
 
 .card-header h2 {
   font-size: 18px;
   margin: 0;
-  color: #fff;
+  color: #ffffff;
   font-weight: 600;
 }
 
 .currency-badge,
 .holdings-count,
 .transaction-count {
-  background: rgba(100, 100, 255, 0.2);
+  background: rgba(100, 150, 255, 0.25);
   padding: 4px 12px;
   border-radius: 20px;
   font-size: 12px;
   font-weight: 600;
-  color: #6400ff;
+  color: #64ff64;
 }
 
 .balance-display {
   text-align: center;
   margin-bottom: 20px;
+  background: rgba(100, 150, 255, 0.12);
+  padding: 16px;
+  border-radius: 8px;
 }
 
 .balance-amount {
   font-size: 32px;
   font-weight: 700;
-  color: #6400ff;
+  color: #00ff88;
   margin: 0;
 }
 
 .balance-details {
-  background: rgba(100, 100, 255, 0.08);
+  background: rgba(100, 100, 255, 0.15);
   border-radius: 8px;
   padding: 12px;
 }
@@ -100,7 +103,7 @@
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
-  border-bottom: 1px solid rgba(100, 100, 255, 0.1);
+  border-bottom: 1px solid rgba(100, 100, 255, 0.2);
   font-size: 14px;
 }
 
@@ -109,11 +112,12 @@
 }
 
 .balance-row span {
-  color: #b0b0b0;
+  color: #e0e0e0;
+  font-weight: 500;
 }
 
 .balance-row .amount {
-  color: #6400ff;
+  color: #64ff64;
   font-weight: 600;
 }
 
@@ -129,31 +133,32 @@
 }
 
 .holding-row {
-  background: rgba(100, 100, 255, 0.08);
+  background: rgba(100, 150, 255, 0.12);
   padding: 12px;
   border-radius: 8px;
-  border: 1px solid rgba(100, 100, 255, 0.2);
+  border: 1px solid rgba(100, 150, 255, 0.3);
   transition: all 0.3s ease;
 }
 
 .holding-row:hover {
-  background: rgba(100, 100, 255, 0.15);
-  border-color: rgba(100, 100, 255, 0.4);
+  background: rgba(100, 150, 255, 0.2);
+  border-color: rgba(100, 150, 255, 0.5);
 }
 
 .crypto-symbol {
   display: block;
   font-size: 14px;
   font-weight: 700;
-  color: #6400ff;
+  color: #00ff88;
   margin-bottom: 6px;
 }
 
 .crypto-quantity {
   display: block;
   font-size: 12px;
-  color: #b0b0b0;
+  color: #e0e0e0;
   word-break: break-all;
+  font-weight: 500;
 }
 
 /* Transactions */
@@ -171,10 +176,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 12px;
-  background: rgba(100, 100, 255, 0.05);
+  background: rgba(100, 150, 255, 0.08);
   border-radius: 6px;
   margin-bottom: 8px;
-  border-left: 3px solid #6400ff;
+  border-left: 3px solid #00ff88;
   font-size: 13px;
 }
 
@@ -183,7 +188,7 @@
 }
 
 .transaction-row.buy {
-  border-left-color: #6400ff;
+  border-left-color: #00ff88;
 }
 
 .txn-info {
@@ -194,8 +199,8 @@
 }
 
 .txn-type {
-  background: rgba(100, 100, 255, 0.2);
-  color: #6400ff;
+  background: rgba(0, 255, 136, 0.25);
+  color: #00ff88;
   padding: 2px 8px;
   border-radius: 4px;
   font-weight: 600;
@@ -204,12 +209,12 @@
 }
 
 .transaction-row.sell .txn-type {
-  background: rgba(255, 107, 107, 0.2);
+  background: rgba(255, 107, 107, 0.25);
   color: #ff6b6b;
 }
 
 .txn-symbol {
-  color: #b0b0b0;
+  color: #e0e0e0;
   font-weight: 600;
 }
 
@@ -222,13 +227,13 @@
 }
 
 .quantity {
-  color: #6400ff;
+  color: #00ff88;
   font-weight: 600;
   font-size: 12px;
 }
 
 .price {
-  color: #c0c0c0;
+  color: #e0e0e0;
   font-size: 11px;
 }
 
@@ -237,11 +242,11 @@
 }
 
 .price.sell {
-  color: #99ff99;
+  color: #00ff88;
 }
 
 .txn-time {
-  color: #707070;
+  color: #a0a0a0;
   font-size: 11px;
 }
 
@@ -257,17 +262,17 @@
 }
 
 .stat-item {
-  background: rgba(100, 100, 255, 0.08);
+  background: rgba(100, 150, 255, 0.12);
   padding: 12px;
   border-radius: 8px;
-  border: 1px solid rgba(100, 100, 255, 0.2);
+  border: 1px solid rgba(100, 150, 255, 0.3);
   text-align: center;
 }
 
 .stat-label {
   display: block;
   font-size: 12px;
-  color: #b0b0b0;
+  color: #e0e0e0;
   margin-bottom: 6px;
   font-weight: 500;
 }
@@ -276,7 +281,7 @@
   display: block;
   font-size: 20px;
   font-weight: 700;
-  color: #6400ff;
+  color: #00ff88;
 }
 
 /* Empty State */
