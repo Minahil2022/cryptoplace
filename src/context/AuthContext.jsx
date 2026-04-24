@@ -1,6 +1,6 @@
-import { createContext, useState, useEffect, useContext } from 'react'
+import { createContext, useState, useEffect } from 'react'
 import UserService from '../services/UserService'
-import { WalletContext } from './WalletContext'
+import WalletService from '../services/WalletService'
 // User type import for JSDoc
 import { /** @type {User} */ } from '../models/UserModel'
 
@@ -40,7 +40,21 @@ const AuthContextProvider = (props) => {
         setUser(result.user)
         setIsAuthenticated(true)
         localStorage.setItem('authUser', JSON.stringify(result.user))
+        
         // Initialize wallet for logged in user
+        // Try to fetch existing wallet first
+        let walletResult = await WalletService.getWallet(result.user.id)
+        
+        // If wallet doesn't exist, create one
+        if (!walletResult.success) {
+          walletResult = await WalletService.initializeWallet(
+            result.user.id,
+            result.user.created_by,
+            { USD: 10000.00, EUR: 8000.00 }
+          )
+        }
+        
+        // Note: WalletContext will be updated separately by useEffect
         return { success: true, message: result.message }
       } else {
         return { success: false, message: result.message }
@@ -79,7 +93,6 @@ const AuthContextProvider = (props) => {
       setUser(null)
       setIsAuthenticated(false)
       localStorage.removeItem('authUser')
-      localStorage.removeItem('userWallet')
       UserService.logout()
     } catch (error) {
       console.error('Logout error:', error)

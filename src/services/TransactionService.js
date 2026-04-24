@@ -4,6 +4,46 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000
 
 class TransactionService {
   /**
+   * Get transaction history for a user
+   * @param {number} userId
+   * @param {number} limit
+   * @param {number} offset
+   * @returns {Promise<Object>}
+   */
+  async getTransactionHistory(userId, limit = 50, offset = 0) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/transactions/${userId}?limit=${limit}&offset=${offset}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })
+
+      const data = await response.json()
+
+      if (!response.ok) {
+        return {
+          success: false,
+          message: data.error || 'Failed to retrieve transaction history'
+        }
+      }
+
+      return {
+        success: true,
+        message: data.message || 'Transaction history retrieved successfully',
+        transactions: data.data || [],
+        count: data.count || 0
+      }
+    } catch (error) {
+      console.error('Transaction history error:', error)
+      return {
+        success: false,
+        message: 'Network error. Please try again.'
+      }
+    }
+  }
+
+  /**
    * Buy crypto coins
    * @param {object} transactionData
    * @param {number} transactionData.userId - User ID

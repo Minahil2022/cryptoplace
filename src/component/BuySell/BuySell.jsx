@@ -4,19 +4,14 @@ import './BuySell.css'
 import { CoinContext } from '../../context/CoinContext'
 import { AuthContext } from '../../context/AuthContext'
 import { WalletContext } from '../../context/WalletContext'
-import TransactionService from '../../services/TransactionService'
 
 const BuySell = ({ coinData }) => {
   const { currency } = useContext(CoinContext)
   const { isAuthenticated, user } = useContext(AuthContext)
   const { 
     wallet, 
-    deductFiatBalance, 
-    addFiatBalance, 
-    addCryptoHolding, 
-    removeCryptoHolding, 
-    updateWallet,
-    addTransaction 
+    buyCoins,
+    sellCoins
   } = useContext(WalletContext)
   const navigate = useNavigate()
   const [usdAmount, setUsdAmount] = useState(10)
@@ -62,12 +57,7 @@ const BuySell = ({ coinData }) => {
     setLoading(true)
 
     try {
-      // Optimistic UI update
-      deductFiatBalance(currency.name.toUpperCase(), displayTotal)
-      addCryptoHolding(coinSymbol, cryptoQuantity)
-
-      // Call backend API
-      const result = await TransactionService.buyCoins({
+      const result = await buyCoins({
         userId: user?.id,
         coinSymbol: coinSymbol,
         usdAmount: usdAmount,
@@ -77,31 +67,13 @@ const BuySell = ({ coinData }) => {
       })
 
       if (result.success) {
-        // Add transaction to history
-        addTransaction({
-          type: 'buy',
-          symbol: coinSymbol,
-          quantity: cryptoQuantity,
-          usdAmount: usdAmount,
-          fee: fee,
-          total: displayTotal,
-          timestamp: new Date().toISOString(),
-          status: 'completed'
-        })
-
         showToast(`Bought ${cryptoQuantity.toFixed(8)} ${coinData?.symbol?.toUpperCase()}`, 'success')
         setUsdAmount(10)
       } else {
-        // Revert optimistic update on failure
-        addFiatBalance(currency.name.toUpperCase(), displayTotal)
-        removeCryptoHolding(coinSymbol, cryptoQuantity)
         showToast(result.message || 'Transaction failed', 'error')
       }
     } catch (err) {
       console.error('Buy transaction error:', err)
-      // Revert optimistic update
-      addFiatBalance(currency.name.toUpperCase(), displayTotal)
-      removeCryptoHolding(coinSymbol, cryptoQuantity)
       showToast('An error occurred. Please try again.', 'error')
     } finally {
       setLoading(false)
@@ -117,12 +89,7 @@ const BuySell = ({ coinData }) => {
     setLoading(true)
 
     try {
-      // Optimistic UI update
-      removeCryptoHolding(coinSymbol, cryptoQuantity)
-      addFiatBalance(currency.name.toUpperCase(), displayTotal)
-
-      // Call backend API
-      const result = await TransactionService.sellCoins({
+      const result = await sellCoins({
         userId: user?.id,
         coinSymbol: coinSymbol,
         usdAmount: usdAmount,
@@ -132,31 +99,13 @@ const BuySell = ({ coinData }) => {
       })
 
       if (result.success) {
-        // Add transaction to history
-        addTransaction({
-          type: 'sell',
-          symbol: coinSymbol,
-          quantity: cryptoQuantity,
-          usdAmount: usdAmount,
-          fee: fee,
-          netProceeds: displayTotal,
-          timestamp: new Date().toISOString(),
-          status: 'completed'
-        })
-
         showToast(`Sold ${cryptoQuantity.toFixed(8)} ${coinData?.symbol?.toUpperCase()}`, 'success')
         setUsdAmount(10)
       } else {
-        // Revert optimistic update on failure
-        addCryptoHolding(coinSymbol, cryptoQuantity)
-        deductFiatBalance(currency.name.toUpperCase(), displayTotal)
         showToast(result.message || 'Transaction failed', 'error')
       }
     } catch (err) {
       console.error('Sell transaction error:', err)
-      // Revert optimistic update
-      addCryptoHolding(coinSymbol, cryptoQuantity)
-      deductFiatBalance(currency.name.toUpperCase(), displayTotal)
       showToast('An error occurred. Please try again.', 'error')
     } finally {
       setLoading(false)
