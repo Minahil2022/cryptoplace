@@ -1,6 +1,14 @@
 // UserService.js - API service for user authentication
+// Supports both database mode (USE_ETHERS=false) and blockchain mode (USE_ETHERS=true)
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000/api';
+import { getApiBaseUrl, isDatabaseMode } from '../config/blockchain.js';
+
+const API_BASE_URL = getApiBaseUrl();
+
+// Log mode on first import (development only)
+if (import.meta.env.VITE_APP_MODE === 'development') {
+  console.log(`👤 UserService initialized in ${isDatabaseMode() ? 'database' : 'blockchain'} mode`);
+}
 
 class UserService {
   /**
