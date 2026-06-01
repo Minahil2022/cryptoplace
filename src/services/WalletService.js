@@ -3,6 +3,25 @@
 
 import { getApiBaseUrl, isDatabaseMode } from '../config/blockchain.js';
 
+// metamask integreation 
+import { ethers } from "ethers";
+
+export const connectMetaMask = async () => {
+  if (!window.ethereum) {
+    throw new Error("MetaMask is not installed");
+  }
+
+  // Request wallet connection
+  const provider = new ethers.BrowserProvider(window.ethereum);
+  await provider.send("eth_requestAccounts", []);
+
+  const signer = await provider.getSigner();
+  const address = await signer.getAddress();
+
+  return { provider, signer, address };
+};
+
+
 const API_BASE_URL = getApiBaseUrl();
 
 // Log mode on first import (development only)

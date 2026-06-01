@@ -93,6 +93,7 @@ class UserService {
         user: {
           id: data.user.id,
           user_name: data.user.user_name,
+          wallet_address: data.user.wallet_address,
           created_by: data.user.created_by
         }
       };

@@ -72,7 +72,7 @@ const Navbar = () => {
   return (
     <div className='navbar'>
       <Link to={'/'}>
-        <img src="" alt="" />
+        <img/>
       </Link>
       <ul>
         <Link to={'/'}><li>Home</li></Link>
@@ -159,7 +159,7 @@ const Navbar = () => {
               <button className="login-btn">Login</button>
             </Link>
             <Link to='/signup'>
-              <button className="signup-btn">Sign Up <img src="" alt="" /></button>
+              <button className="signup-btn">Sign Up </button>
             </Link>
           </>
         )}

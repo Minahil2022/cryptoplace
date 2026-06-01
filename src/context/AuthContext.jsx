@@ -40,7 +40,6 @@ const AuthContextProvider = (props) => {
         setUser(result.user)
         setIsAuthenticated(true)
         localStorage.setItem('authUser', JSON.stringify(result.user))
-        
         // Initialize wallet for logged in user
         // Try to fetch existing wallet first
         let walletResult = await WalletService.getWallet(result.user.id)

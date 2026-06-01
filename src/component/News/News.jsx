@@ -53,7 +53,7 @@ const News = () => {
       },
       {
         title: "DeFi Protocol Launches Innovative Yield Farming Features",
-        url: "https://defi.example.com",
+        url: "https://de.fi/",
         icon: "🌾",
         gradient: "linear-gradient(135deg, #11998e 0%, #38ef7d 100%)",
         sources: [{ title: "DeFi Pulse" }]
