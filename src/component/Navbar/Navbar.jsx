@@ -7,7 +7,7 @@ import { AuthContext } from '../../context/AuthContext'
 import { WalletContext } from '../../context/WalletContext'
 import { Link, useNavigate } from 'react-router-dom'
 
-const Navbar = () => {
+const Navbar = ({ setShowChat }) => {
   const { setCurrency, currency } = useContext(CoinContext)
   /** @type {{ isAuthenticated: boolean, user: import('../../models/UserModel').User|null, logout: Function }} */
   const { isAuthenticated, user, logout } = useContext(AuthContext)
@@ -80,6 +80,7 @@ const Navbar = () => {
         <li>Features</li>
         <li>Pricing</li>
         <li>Blog</li>
+        <li className='chat-link' onClick={() => setShowChat(true)}>AI Chat</li>
       </ul>
       <button className="menu-btn"onClick={() => setMenuOpen(!menuOpen)}>☰</button>
       <div className="nav-right">
