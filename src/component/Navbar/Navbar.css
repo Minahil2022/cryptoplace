@@ -310,6 +310,14 @@
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(100, 0, 255, 0.5);
 }
+.menu-btn {
+    display: none !important;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
 
 @media (max-width: 900px){
     .navbar{
@@ -322,13 +330,24 @@
     }
 }
 @media (max-width: 768px){
-    .navbar{
-        padding: 20px 5%;
-    }
-    .navbar ul{
+
+    .navbar ul {
         display: none;
     }
 
+    .menu-btn {
+        display: block !important;
+    }
 
-    
+    .mobile-menu.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: #121244;
+        padding: 20px;
+        gap: 20px;
+    }
 }

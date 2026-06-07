@@ -15,7 +15,7 @@ const Navbar = () => {
   const navigate = useNavigate()
   const [showWalletDropdown, setShowWalletDropdown] = useState(false)
   const userBadgeRef = useRef(null)
-
+  const [menuOpen, setMenuOpen] = useState(false)
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -74,13 +74,14 @@ const Navbar = () => {
       <Link to={'/'}>
         <img/>
       </Link>
-      <ul>
+      <ul className={menuOpen ? "mobile-menu active" : "mobile-menu"}>
         <Link to={'/'}><li>Home</li></Link>
         <Link to={'/news'}><li>News</li></Link>
         <li>Features</li>
         <li>Pricing</li>
         <li>Blog</li>
       </ul>
+      <button className="menu-btn"onClick={() => setMenuOpen(!menuOpen)}>☰</button>
       <div className="nav-right">
         <select onChange={currencyHandler}>
           <option value="usd">USD</option>
